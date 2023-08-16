@@ -1,6 +1,6 @@
 'use server'
 
-const getUserAuthenticated = (user) => {
+const getUserAuthenticated = (user,email ,password) =>{
   const user = [
         {
         name:'Marcelino',
@@ -12,25 +12,31 @@ const getUserAuthenticated = (user) => {
         name:'Ahsoka Tano',
         email:'padawan@legalbrow.com',
         password:'6666666',
-        token:''
+        token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+
     },
        {
         name:'Anakin Skywalker',
         email:'nowimthemaster@legalbrow.com',
         password:'555555',
-        token:''
+        token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+
        },
        {
         name:'Padmé',
         email:'legacy@legalbrow.com',
         password:'555555',
-        token:''
+        token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
        }
 ];
+
+   const validarUser = user.map( user.email === email && user.password === password);
+   return validarUser;
 }
 
+
 const getUsers = () =>{
-   
+   return user;
         
 }
 export { getUsers, getUserAuthenticated };
