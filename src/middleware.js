@@ -19,9 +19,9 @@ export const middleware = (request) => {
         if (request.nextUrl.pathname === pgDashboard) {
             return NextResponse.redirect(urlLogin);
         }
-    }
-    NextResponse.next();
-  }
+    } 
+  } 
+  NextResponse.next();
 };
 export const config = {
     matcher: ['/', '/pages/dashboard']
