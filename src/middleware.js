@@ -8,21 +8,23 @@ export const middleware = (request) => {
     const urlLogin = new URL('/', request.url);
     const isTokenValidated = validateToken(token);
     const pgDashboard = new URL ('/pages/dashboard', request.url);
-
-    if (request.nextUrl.pathname === '/') {// Verifica se o caminho é a página de login
-        if (isTokenValidated && token) {
-            return NextResponse.redirect(pgDashboard);
-        }
-
-    } else if (request.nextUrl.pathname === pgDashboard) {// Verifica  se o token não é válido ou não existe
-    if (!isTokenValidated || !token) {
-        if (request.nextUrl.pathname === pgDashboard) {
+    
+    if (!isTokenValidated || token) {
+        if (request.nextUrl.pathname === '/pages/dashboard') {
             return NextResponse.redirect(urlLogin);
         }
     } 
-  } 
+    if (isTokenValidated) {
+        if (request.nextUrl.pathname === '/') {
+            return NextResponse.redirect(pgDashboard);
+        }
+    } 
+  
   NextResponse.next();
-};
+
+  } 
+    
+    // Verifica  se o token não é válido ou não existe
 export const config = {
     matcher: ['/', '/pages/dashboard']
 };
