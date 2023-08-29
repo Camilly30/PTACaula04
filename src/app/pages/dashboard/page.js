@@ -6,7 +6,7 @@ export default async function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            <Suspense fallback={<p>Carregando paixão...</p>}>
+            <Suspense fallback={<p>Carregando ...</p>}>
                 <ListUser user={users}/>
             </Suspense>
         </div>
