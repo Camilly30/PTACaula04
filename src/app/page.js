@@ -22,7 +22,7 @@ export default function Login() {
       }
       push('/pages/dashboard');
     } catch {
-      refresh();
+      toast.error ("Erro na Aplicação")
     }
   }
   return (
