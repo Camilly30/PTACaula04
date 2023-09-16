@@ -1,5 +1,6 @@
 import { getUsers } from "@/app/functions/handlerAcessAPI";
 import { Suspense } from "react";
+import ListUser from "@/app/componetes/ListUser";
 
 export default async function Dashboard() {
     const users = await getUsers ();
