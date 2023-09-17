@@ -26,22 +26,18 @@ export default function Login() {
     }
   }
   return (
-    <div className="">
-      <h1>Login</h1>
-      <form onSubmit={handlerLogin}>
-        <input
-          placeholder='E-mail'
-          type="email"
-          onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
-        </input>
-        <input
-          placeholder='Senha'
-          type='password'
-          onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
-        </input>
+    <div className="login">
+      <div class="card-header"><h1>Login</h1></div>
+      <div className="b">
+         <form  class="card" onSubmit={handlerLogin}>
+           <div class="card-content">
+             <div class="card-content-area"><input placeholder='E-mail' type='email' onChange={(e) => { setUser({ ...user, email: e.target.value }) }}></input></div>
+             <div class="card-content-area"><input placeholder='Senha' type='password' onChange={(e) => { setUser({ ...user, password: e.target.value }) }}></input></div>
+            </div>
         <button>Entrar</button>
-      </form>
       <ToastContainer/>
+     </form>
+     </div>
     </div>
   )
 }

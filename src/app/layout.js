@@ -1,4 +1,4 @@
-
+import './css/css.css'
 export const metadata = {
   title: 'Register users',
   description: 'Project for class PTAC',
