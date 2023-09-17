@@ -12,7 +12,7 @@ export const middleware = (request) => {
     const pgDashboard = new URL ('/pages/dashboard', request.url);
     
     if (!isTokenValidated || !token) {
-        if (request.nextUrl.pathname === '/pages/dashboard'|| request.nextUrl.pathname === '/pages/register') {
+        if (request.nextUrl.pathname === '/pages/dashboard'|| request.nextUrl.pathname === '/pages/register' || request.nextUrl.pathname === '/pages/alterar') {
             return NextResponse.redirect(urlLogin);
         }
     } 
@@ -28,6 +28,6 @@ export const middleware = (request) => {
     
     // Verifica  se o token não é válido ou não existe
 export const config = {
-    matcher: ['/', '/pages/dashboard','/pages/register']
+    matcher: ['/', '/pages/dashboard','/pages/register','/pages/alterar']
 };
 
