@@ -16,7 +16,8 @@ export default async function Dashboard() {
                      <p>{users.email}</p>
                      ))}
             </Suspense>
-            <Link href="/pages/register">Registrar</Link>
+            <Link href="/pages/register">Registrar</Link><br/>
+            <Link href="/pages/alterar">Alterar</Link>
         </div>
     );
 };
