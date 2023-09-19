@@ -3,15 +3,24 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 const FormAlterar= () => {
- 
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  const { refresh } = useRouter();
+
 
   const handlerLogin = async (e) => {
     e.preventDefault();
-
-    // Display a toast message using the toast.error function
-    toast.error('Erro na Aplicação');
+    try {
+        toast.success("Alteração concluía Sucesso")
+  }catch {
+      refresh();
+      toast.error('Erro na Aplicação');
+    }
   };
 
   return (
