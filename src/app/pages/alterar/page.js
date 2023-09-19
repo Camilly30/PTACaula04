@@ -5,11 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 
 const FormAlterar= () => {
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+ 
 
   const handlerLogin = async (e) => {
     e.preventDefault();

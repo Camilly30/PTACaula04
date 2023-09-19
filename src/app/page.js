@@ -28,7 +28,7 @@ export default function Login() {
   }
   return (
     <div className="login">
-      <div class="card-header"><h1>Login</h1></div>
+      <div className="card-header"><h1>Login</h1></div>
       <div className="b">
          <form  class="card" onSubmit={handlerLogin}>
            <div class="card-content">
