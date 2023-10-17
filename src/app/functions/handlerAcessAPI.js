@@ -46,19 +46,23 @@ const user = [
 }
 ]
 
-const getUserAuthenticated = (userValor) => {
-    let userAuth = {}
-        user.map((user) => {
-            if (user.email == userValor.email && user.password == userValor.password){
-                userAuth = user
-            }
-           }
-          )
-           return userAuth
+const url ="https://aula-17-10-nu.vercel.app";
+
+
+const getUserAuthenticated = async (user) => {
+         const responseOfApi = await fetch(url +"/user/authenticated",
+         {
+            method:"POST",
+            headers:{" Content-Type":"Application/json"},
+            body: JSON.stringify(user)
          }
+         );
+        const userAuth =await responseOfApi.json();
+        return userAuth;
+}
 
 const getUsers = () =>{
-        return user       
+               
 }
 
 export { getUsers, getUserAuthenticated };
