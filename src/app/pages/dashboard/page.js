@@ -5,8 +5,8 @@ import ListUser from "@/app/componetes/ListUser";
 import Link from "next/link";
 
 export default async function Dashboard() {
-    const users =  getUsers ();
-  
+    const users =  await getUsers ();
+     
     return (
         
         <div className="dash">
