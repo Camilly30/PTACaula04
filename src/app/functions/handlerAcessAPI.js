@@ -1,7 +1,7 @@
 
 'use server'
 
-const user = [
+/*const user = [
     {
        id:1,
         name:'Teste',
@@ -45,21 +45,24 @@ const user = [
     token:'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY5MTU0MiwiaWF0IjoxNjk1NjkxNTQyfQ.EG-A9n08TjSSm2affCX5Bl3yRpDbIytMIO5j2iMalLA'
 }
 ]
+*/
 
 const url ="https://aula-17-10-nu.vercel.app";
 
 
 const getUserAuthenticated = async (user) => {
+    console.log(user)
     try{
          const responseOfApi = await fetch(url +"/user/authenticated",
          {
             cache:"no-cache",
             method:"POST",
-            headers:{" Content-Type":"Application/json"},
+            headers:{"Content-Type":"Application/json"},
             body: JSON.stringify(user)
          }
          );
         const userAuth = await responseOfApi.json();
+        console.log(userAuth)
         return userAuth;
        
     }catch{
@@ -67,7 +70,7 @@ const getUserAuthenticated = async (user) => {
     }
 }
 const getUsers = async() =>{
-   try{ const responseOfApi = await fetch(url +"/user",{// vai reenderizar a cada 10s
+   try{ const responseOfApi = await fetch(url +"/users",{// vai reenderizar a cada 10s
         next:{revalidate :10}
     });
     const listUsers = responseOfApi.json();
