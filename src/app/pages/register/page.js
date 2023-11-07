@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Link from "next/link";
+import { postUser } from "@/app/functions/handlerAcessAPI";
 //import { getUsers, getUserAuthenticated } from "@/app/functions/handlerAcessAPI"; 
 
 export default function RegisterForm() {
@@ -22,12 +23,14 @@ export default function RegisterForm() {
     }
   }, []);
 
-  const handlerRegistro = async (e) => {
-    e.preventDefault();
-    localStorage.setItem("registrarUser", JSON.stringify(user));
-    toast.success("Cadastro realizado com sucesso!");
-    push('/pages/dashboard');
-
+  const handlerRegistro = async (event) => {
+    event.preventDefault();
+    try{
+      await postUser(user);
+     return push('/pages/dashboard');
+    }catch{
+      return toast.error("Erro");
+    }
   };
 
   return (

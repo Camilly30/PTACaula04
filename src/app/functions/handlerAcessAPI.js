@@ -1,54 +1,26 @@
 
 'use server'
 
-/*const user = [
-    {
-       id:1,
-        name:'Teste',
-        email:'teste@teste',
-        password:'111' ,
-        token:'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY5MTU0MiwiaWF0IjoxNjk1NjkxNTQyfQ.EG-A9n08TjSSm2affCX5Bl3yRpDbIytMIO5j2iMalLA'
-    },
-    {
-       id:2,
-        name:'Marcelino',
-        email:'marcelino@teste.com',
-        password:'1234' ,
-      token:'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY5MTU0MiwiaWF0IjoxNjk1NjkxNTQyfQ.EG-A9n08TjSSm2affCX5Bl3yRpDbIytMIO5j2iMalLA'
-    },
-    {
-       id:3,
-        name:'Camilly',
-        email:'Camilly@teste.com',
-        password:'666' ,
-        token:'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY5MTU0MiwiaWF0IjoxNjk1NjkxNTQyfQ.EG-A9n08TjSSm2affCX5Bl3yRpDbIytMIO5j2iMalLA'
-    },
-    {
-       id:4,
-        name:'Ahsoka ',
-        email:'Ahsoka@teste.com',
-        password:'456' ,
-        token:'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY5MTU0MiwiaWF0IjoxNjk1NjkxNTQyfQ.EG-A9n08TjSSm2affCX5Bl3yRpDbIytMIO5j2iMalLA'
-    },
-    {
-     id:5,
-      name:'Anakin ',
-      email:'imtheMaster@teste.com',
-      password:'456' ,
-      token:'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY5MTU0MiwiaWF0IjoxNjk1NjkxNTQyfQ.EG-A9n08TjSSm2affCX5Bl3yRpDbIytMIO5j2iMalLA'
-  },
-  {
-   id:6,
-    name:'João ',
-    email:'jao@teste.com',
-    password:'123' ,
-    token:'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NTY5MTU0MiwiaWF0IjoxNjk1NjkxNTQyfQ.EG-A9n08TjSSm2affCX5Bl3yRpDbIytMIO5j2iMalLA'
-}
-]
-*/
+//milllybacarim@gmail.com senha:123
+
 
 const url ="https://aula-17-10-nu.vercel.app";
 
+const postUser = async (user) =>{
+    try{
+        const responseOfApi = await fetch(url +"/user",
+        {
+           method:"POST",
+           headers:{"Content-Type":"Application/json"},
+           body: JSON.stringify(user)
+        }
+        );
+        const userSave = await responseOfApi.json();
+        return userSave;
+    }catch{
+        return null;
+    }
+}
 
 const getUserAuthenticated = async (user) => {
     console.log(user)
@@ -80,6 +52,6 @@ const getUsers = async() =>{
         return null 
 }
 }
-export { getUsers, getUserAuthenticated };
+export { getUsers, getUserAuthenticated, postUser};
 
 
