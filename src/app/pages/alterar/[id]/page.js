@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
@@ -7,20 +7,30 @@ import { useRouter } from "next/navigation";
 
 const FormAlterar= () => {
   const [user, setUser] = useState({
+    name:'',
     email: '',
     password: '',
   });
   const { refresh } = useRouter();
 
+  useEffect(()=>{
+    const findUser = async () =>{
+     const userFind = await getUser(params.id);
+     setUser({...user,  name:  userFind.name, email: userFind.email, password: userFind.password});
+  }
+  findUser();
+  },[])
 
-  const handlerLogin = async (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
-    try {
-        toast.success("Alteração concluía Sucesso")
-  }catch {
+    await updateUser(user, params.id);
+    await new Promise((resolve) =>{
+      toast.success("Alteração concluía Sucesso")
+      setTimeout(resolve, 5000);
+    });
       refresh();
       toast.error('Erro na Aplicação');
-    }
+    
   };
 
   return (
@@ -29,7 +39,7 @@ const FormAlterar= () => {
         <h1>Alterar</h1>
       </div>
       <div className="b">
-        <form className="card" onSubmit={handlerLogin}>
+        <form className="card" onSubmit={handlerSubmit}>
           <div className="card-content">
             <div className="card-content-area">
               <input
